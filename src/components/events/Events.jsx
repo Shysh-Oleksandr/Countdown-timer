@@ -1,7 +1,7 @@
 import React from "react";
 import "./events.scss";
 
-const Events = () => {
+const Events = ({ events }) => {
   return (
     <nav className="countdown__navigation" id="nav">
       <ul className="countdown__list">
