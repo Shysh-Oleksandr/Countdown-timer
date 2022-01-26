@@ -1,39 +1,32 @@
 import React from "react";
 import "./events.scss";
 
-const Events = ({ events }) => {
+const Events = ({ events, currentEventIndex, setCurrentEventIndex }) => {
+  function changeCountdown(e) {
+    e.preventDefault();
+    const event = events.find((event) => {
+      return event.name.toLowerCase() === e.target.innerText.toLowerCase();
+    });
+    setCurrentEventIndex(event.id);
+  }
+
   return (
     <nav className="countdown__navigation" id="nav">
       <ul className="countdown__list">
-        <li className="countdown__link active">
-          <a href="" data-image="img/halloween.webp" data-date="31 Oct 2022">
-            Halloween
-          </a>
-        </li>
-        <li className="countdown__link">
-          <a href="" data-image="img/christmas.webp" data-date="25 Dec 2019">
-            Christmas
-          </a>
-        </li>
-        <li className="countdown__link">
-          <a href="" data-image="img/newYear.webp" data-date="1 Jan 2022">
-            New Year
-          </a>
-        </li>
-        <li className="countdown__link">
-          <a href="" data-image="img/easter.webp" data-date="17 Apr 2020">
-            Easter
-          </a>
-        </li>
-        <li className="countdown__link">
-          <a
-            href=""
-            data-image="img/valentinesDay.webp"
-            data-date="14 Feb 2021"
-          >
-            Valentine’s Day
-          </a>
-        </li>
+        {events.map((event) => {
+          return (
+            <li
+              key={event.name + event.id}
+              className={`countdown__link ${
+                event.id === currentEventIndex ? "active" : ""
+              }`}
+            >
+              <a onClick={(e) => changeCountdown(e)} href="">
+                {event.name}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

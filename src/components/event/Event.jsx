@@ -28,14 +28,33 @@ const Event = ({ currentEvent }) => {
     setTime({ days: days, hours: hours, minutes: minutes, seconds: seconds });
   }
 
+  function checkDate(currentEvent) {
+    let date = currentEvent.date;
+    let newEventDate = new Date(date);
+    let currentDate = new Date();
+
+    // While there's old date, increasing year.
+    while (newEventDate < currentDate) {
+      let eventYear = date.split(" ")[2];
+      eventYear++;
+      let newEventArray = date.split(" ");
+      newEventArray[2] = eventYear;
+      date = newEventArray.join(" ");
+      newEventDate = new Date(date);
+    }
+
+    return date;
+  }
+
   useEffect(() => {
-    countdown(currentEvent.date);
+    // Setting coundown timer for new date.
+    countdown(checkDate(currentEvent));
 
     const interval = setInterval(() => {
-      countdown(currentEvent.date);
+      countdown(checkDate(currentEvent));
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentEvent]);
 
   return (
     <div className="event fade">

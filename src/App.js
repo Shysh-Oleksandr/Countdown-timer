@@ -5,11 +5,18 @@ import eventsData from "./eventsData";
 
 function App() {
   const [events, setEvents] = useState(eventsData);
-  const [currentEventIndex, setCurrentEventIndex] = useState(0);
+  const [currentEventIndex, setCurrentEventIndex] = useState(1);
   return (
-    <div className="wrapper">
+    <div
+      className="wrapper"
+      style={{ backgroundImage: `url(${events[currentEventIndex].image})` }}
+    >
       <Event currentEvent={events[currentEventIndex]} />
-      <Events events={events} />
+      <Events
+        events={events}
+        currentEventIndex={currentEventIndex}
+        setCurrentEventIndex={setCurrentEventIndex}
+      />
     </div>
   );
 }
