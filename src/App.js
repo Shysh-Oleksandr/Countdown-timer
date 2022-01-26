@@ -1,7 +1,16 @@
-import "./App.css";
+import { useState } from "react";
+import Event from "./components/event/Event";
+import Events from "./components/events/Events";
+import eventsData from "./eventsData";
 
 function App() {
-  return <div className="App"></div>;
+  const [events, setEvents] = useState([eventsData]);
+  return (
+    <div className="wrapper">
+      <Event />
+      <Events />
+    </div>
+  );
 }
 
 export default App;
