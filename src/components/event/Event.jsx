@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./event.scss";
 
 const Event = ({ currentEvent }) => {
@@ -8,6 +8,9 @@ const Event = ({ currentEvent }) => {
     minutes: 0,
     seconds: 0,
   });
+
+  const eventRef = useRef(null);
+  const headerRef = useRef(null);
 
   function formatTime(time) {
     return time < 10 ? `0${time}` : time;
@@ -48,7 +51,17 @@ const Event = ({ currentEvent }) => {
 
   useEffect(() => {
     // Setting coundown timer for new date.
-    countdown(checkDate(currentEvent));
+    eventRef.current.classList.remove("fade"); // removing the class
+    headerRef.current.classList.remove("fade"); // removing the class
+
+    setTimeout(() => {
+      countdown(checkDate(currentEvent));
+
+      requestAnimationFrame(() => {
+        eventRef.current.classList.add("fade");
+        headerRef.current.classList.add("fade");
+      });
+    }, 225); // timeout
 
     const interval = setInterval(() => {
       countdown(checkDate(currentEvent));
@@ -57,14 +70,14 @@ const Event = ({ currentEvent }) => {
   }, [currentEvent]);
 
   return (
-    <div className="event fade">
+    <div className="event">
       <div className="event__header">
         <h2 className="event__suptitle">— countdown to —</h2>
-        <h1 className="event__title" id="title">
+        <h1 className="event__title fade" ref={headerRef} id="title">
           {currentEvent.name}
         </h1>
       </div>
-      <div className="countdown">
+      <div className="countdown fade" ref={eventRef}>
         <div className="countdown__item">
           <div className="countdown__days countdown__item-info">
             <p className="countdown__number" id="days">

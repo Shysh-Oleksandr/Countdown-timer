@@ -7,7 +7,9 @@ const Events = ({ events, currentEventIndex, setCurrentEventIndex }) => {
     const event = events.find((event) => {
       return event.name.toLowerCase() === e.target.innerText.toLowerCase();
     });
-    setCurrentEventIndex(event.id);
+    setTimeout(() => {
+      setCurrentEventIndex(event.id);
+    }, 225);
   }
 
   return (
