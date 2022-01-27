@@ -94,4 +94,42 @@ $add-event-bg: rgb(83, 69, 69);
     margin-top: 0.5rem;
     display: block;
   }
+
+  &__bg-images {
+    margin-top: 1rem;
+  }
+
+  &__bg-images {
+    margin-top: 1rem;
+  }
+
+  &__bg-images-list {
+    display: flex;
+    overflow-x: auto;
+  }
+
+  &__bg-images-label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+  }
+
+  &__bg-image {
+    flex: 0 0 9rem;
+    cursor: pointer;
+    &:hover,
+    &.active {
+      img {
+        border: 2px solid #fff;
+      }
+    }
+    img {
+      transition: all 0.3s ease-in-out;
+      max-width: 100%;
+      border-radius: 0.7rem;
+      border: 2px solid transparent;
+
+      height: auto;
+    }
+  }
 }

@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./addEvent.scss";
 import { useForm } from "react-hook-form";
+import bgImagesData from "./../../bgImagesData";
 
 const AddEvent = ({
   isAddEventMenu,
@@ -16,6 +17,8 @@ const AddEvent = ({
     getValues,
     formState: { errors },
   } = useForm();
+
+  const [currentBgImageIndex, setCurrentBgImageIndex] = useState(0);
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -45,11 +48,15 @@ const AddEvent = ({
           id: prevEvents.length,
           name: eventName,
           date: eventDate,
-          image: "/images/easter.webp",
+          image: bgImagesData[currentBgImageIndex],
         },
       ];
     });
     setCurrentEventIndex(events.length);
+  }
+
+  function chooseBgImage(index) {
+    setCurrentBgImageIndex(index);
   }
 
   return (
@@ -92,6 +99,25 @@ const AddEvent = ({
               <span className="add-event__error">Event date is old.</span>
             )
           )}
+
+          <div className="add-event__bg-images">
+            <h4 className="add-event__bg-images-label">Background image:</h4>
+            <ul className="add-event__bg-images-list">
+              {bgImagesData.map((bgImage, index) => {
+                return (
+                  <li
+                    className={`add-event__bg-image ${
+                      index === currentBgImageIndex ? "active" : ""
+                    }`}
+                    onClick={() => chooseBgImage(index)}
+                    key={index + bgImage}
+                  >
+                    <img src={bgImage} />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
           <button className="add-event__btn" type="submit">
             Add
