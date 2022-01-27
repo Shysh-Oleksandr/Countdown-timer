@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./addEvent.scss";
 import { useForm } from "react-hook-form";
 import bgImagesData from "./../../bgImagesData";
+import Slider from "react-slick";
 
 const AddEvent = ({
   isAddEventMenu,
@@ -19,6 +20,15 @@ const AddEvent = ({
   } = useForm();
 
   const [currentBgImageIndex, setCurrentBgImageIndex] = useState(0);
+
+  var settings = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    dots: false,
+    slidesToScroll: 1,
+    variableWidth: true,
+  };
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -55,10 +65,6 @@ const AddEvent = ({
     setCurrentEventIndex(events.length);
   }
 
-  function chooseBgImage(index) {
-    setCurrentBgImageIndex(index);
-  }
-
   return (
     <div className="add-event__wrapper">
       <div className="add-event" ref={ref}>
@@ -72,11 +78,17 @@ const AddEvent = ({
               placeholder="Birthday"
               type="text"
               className="add-event__input"
-              {...register("name", { required: true })}
+              {...register("name", { required: true, maxLength: 16 })}
             />
           </div>
-          {errors.name && (
+          {errors.name?.type === "required" ? (
             <span className="add-event__error">Event name is required.</span>
+          ) : (
+            errors.name?.type === "maxLength" && (
+              <span className="add-event__error">
+                Event name must be no longer than 16 characters
+              </span>
+            )
           )}
           <div className="add-event__block">
             <label className="add-event__label" htmlFor="add-event__date">
@@ -103,19 +115,21 @@ const AddEvent = ({
           <div className="add-event__bg-images">
             <h4 className="add-event__bg-images-label">Background image:</h4>
             <ul className="add-event__bg-images-list">
-              {bgImagesData.map((bgImage, index) => {
-                return (
-                  <li
-                    className={`add-event__bg-image ${
-                      index === currentBgImageIndex ? "active" : ""
-                    }`}
-                    onClick={() => chooseBgImage(index)}
-                    key={index + bgImage}
-                  >
-                    <img src={bgImage} />
-                  </li>
-                );
-              })}
+              <Slider {...settings}>
+                {bgImagesData.map((bgImage, index) => {
+                  return (
+                    <li
+                      className={`add-event__bg-image ${
+                        index === currentBgImageIndex ? "active" : ""
+                      }`}
+                      onClick={() => setCurrentBgImageIndex(index)}
+                      key={index + bgImage}
+                    >
+                      <img src={bgImage} />
+                    </li>
+                  );
+                })}
+              </Slider>
             </ul>
           </div>
 

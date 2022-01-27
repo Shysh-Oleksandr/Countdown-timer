@@ -1,4 +1,4 @@
-$orange: #eb7a62;
+$eventColor: #eb7a62;
 
 .countdown__navigation {
   margin: 2.5rem 0;
@@ -10,6 +10,8 @@ $orange: #eb7a62;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-width: 0;
+    position: relative;
 
     @media screen and (max-width: 767.98px) {
       flex-wrap: wrap;
@@ -21,15 +23,29 @@ $orange: #eb7a62;
   // .countdown__link
   &__link {
     margin-right: 2.2rem;
+    flex: 1 1 25%;
+    cursor: pointer;
 
     &--add {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 8;
       border-radius: 0.5rem;
-      border: 3px solid $orange;
+      border: 3px solid $eventColor;
       padding: 0.5rem;
+      max-width: 25%;
       transition: all 0.4s ease;
       cursor: pointer;
+
       a {
-        color: $orange !important;
+        color: $eventColor;
+        font-size: 1.5rem;
+        line-height: 2rem;
+
+        white-space: nowrap;
+        transition: all 0.4s ease;
+
         span {
           vertical-align: sub;
           font-size: 3.5rem;
@@ -38,7 +54,7 @@ $orange: #eb7a62;
       &:hover {
         border-color: #fff;
         a {
-          color: #fff !important;
+          color: #fff;
         }
       }
     }
@@ -67,16 +83,106 @@ $orange: #eb7a62;
       font-size: 1.5rem;
       line-height: 2rem;
       transition: all 0.4s ease 0s;
+      border: 3px solid transparent;
+      border-width: 0px 3px;
+      white-space: nowrap;
     }
     &.active a,
     &:hover a {
-      color: $orange;
+      color: $eventColor;
+      border-color: $eventColor;
+      padding: 1.75rem;
+      background-color: rgba($color: #000, $alpha: 0.2);
     }
 
     &.active a {
       text-transform: uppercase;
       font-weight: bold;
-      font-size: 1.75rem;
+      font-size: 1.6rem;
     }
   }
 }
+
+// Slider
+.countdown__list {
+  min-width: 0;
+  position: relative;
+
+  // Slider
+  .slick-slider {
+    max-width: 90vw;
+  }
+
+  // Limited wrapper
+  .slick-list {
+    overflow: hidden;
+  }
+  // Slides track
+  .slick-track {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  // Arrow
+  .slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    font-size: 0;
+    width: 26px;
+    height: 18px;
+    background-color: $eventColor;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+  // Left arrow
+  .slick-arrow.slick-prev {
+    left: -2%;
+    -webkit-mask-image: url("../../../public/images/arrowLeft.svg");
+    mask-image: url("../../../public/images/arrowLeft.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    @media (max-width: 991.98px) {
+      left: 2%;
+    }
+  }
+  // Right arrow
+  .slick-arrow.slick-next {
+    right: -2%;
+    -webkit-mask-image: url("../../../public/images/arrowRight.svg");
+    mask-image: url("../../../public/images/arrowRight.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    @media (max-width: 991.98px) {
+      right: 2%;
+    }
+  }
+
+  // Dots
+  .slick-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slick-dots li {
+    list-style: none;
+    margin: 0 10px;
+  }
+  // Dot's element
+  .slick-dots li button {
+    font-size: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #d1d6e3;
+    border-radius: 50%;
+  }
+  // Active dot
+  .slick-dots li.slick-active button {
+    background-color: #5283ff;
+  }
+}
+// /Slider

@@ -14,6 +14,7 @@ $add-event-bg: rgb(83, 69, 69);
 
 .add-event {
   flex: 0.34;
+  width: 34%;
   border-radius: 0.3rem;
   margin: 2rem;
   padding: 2rem 4rem;
@@ -105,7 +106,6 @@ $add-event-bg: rgb(83, 69, 69);
 
   &__bg-images-list {
     display: flex;
-    overflow-x: auto;
   }
 
   &__bg-images-label {
@@ -115,7 +115,7 @@ $add-event-bg: rgb(83, 69, 69);
   }
 
   &__bg-image {
-    flex: 0 0 9rem;
+    max-width: 8rem;
     cursor: pointer;
     &:hover,
     &.active {
@@ -133,3 +133,91 @@ $add-event-bg: rgb(83, 69, 69);
     }
   }
 }
+
+// Slider
+.add-event__bg-images-list {
+  min-width: 0;
+  position: relative;
+
+  // Slider
+  .slick-slider {
+    max-width: 100%;
+  }
+
+  // Limited wrapper
+  .slick-list {
+    overflow: hidden;
+  }
+  // Slides track
+  .slick-track {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  // Arrow
+  .slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    font-size: 0;
+    width: 26px;
+    height: 18px;
+    background-color: #fff;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+  // Left arrow
+  .slick-arrow.slick-prev {
+    left: -2%;
+    -webkit-mask-image: url("../../../public/images/arrowLeft.svg");
+    mask-image: url("../../../public/images/arrowLeft.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    @media (max-width: 991.98px) {
+      left: 2%;
+    }
+  }
+
+  .slick-disabled {
+    display: none !important;
+  }
+  // Right arrow
+  .slick-arrow.slick-next {
+    right: -2%;
+    -webkit-mask-image: url("../../../public/images/arrowRight.svg");
+    mask-image: url("../../../public/images/arrowRight.svg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    @media (max-width: 991.98px) {
+      right: 2%;
+    }
+  }
+
+  // Dots
+  .slick-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slick-dots li {
+    list-style: none;
+    margin: 0 10px;
+  }
+  // Dot's element
+  .slick-dots li button {
+    font-size: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #d1d6e3;
+    border-radius: 50%;
+  }
+  // Active dot
+  .slick-dots li.slick-active button {
+    background-color: #5283ff;
+  }
+}
+// /Slider

@@ -1,5 +1,6 @@
 import React from "react";
 import "./events.scss";
+import Slider from "react-slick";
 
 const Events = ({
   events,
@@ -7,6 +8,15 @@ const Events = ({
   setCurrentEventIndex,
   setIsAddEventMenu,
 }) => {
+  var settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    dots: false,
+    centerMode: false,
+    slidesToScroll: 1,
+  };
+
   function changeCountdown(e) {
     e.preventDefault();
     const event = events.find((event) => {
@@ -20,32 +30,34 @@ const Events = ({
   return (
     <nav className="countdown__navigation" id="nav">
       <ul className="countdown__list">
-        {events.map((event) => {
-          return (
-            <li
-              key={event.name + event.id}
-              className={`countdown__link ${
-                event.id === currentEventIndex ? "active" : ""
-              }`}
-            >
-              <a onClick={(e) => changeCountdown(e)} href="">
-                {event.name}
-              </a>
-            </li>
-          );
-        })}
-        <li
-          className="countdown__link countdown__link--add"
-          onClick={(e) => {
-            e.preventDefault();
-            setIsAddEventMenu(true);
-          }}
-        >
-          <a href="">
-            <span>+</span> Add an event
-          </a>
-        </li>
+        <Slider {...settings}>
+          {events.map((event) => {
+            return (
+              <li
+                key={event.name + event.id}
+                className={`countdown__link ${
+                  event.id === currentEventIndex ? "active" : ""
+                }`}
+              >
+                <a onClick={(e) => changeCountdown(e)} href="">
+                  {event.name}
+                </a>
+              </li>
+            );
+          })}
+        </Slider>
       </ul>
+      <div
+        className="countdown__link--add"
+        onClick={(e) => {
+          e.preventDefault();
+          setIsAddEventMenu(true);
+        }}
+      >
+        <a href="">
+          <span>+</span> Add an event
+        </a>
+      </div>
     </nav>
   );
 };
