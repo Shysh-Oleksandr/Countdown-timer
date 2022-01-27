@@ -1,7 +1,12 @@
 import React from "react";
 import "./events.scss";
 
-const Events = ({ events, currentEventIndex, setCurrentEventIndex }) => {
+const Events = ({
+  events,
+  currentEventIndex,
+  setCurrentEventIndex,
+  setIsAddEventMenu,
+}) => {
   function changeCountdown(e) {
     e.preventDefault();
     const event = events.find((event) => {
@@ -29,6 +34,17 @@ const Events = ({ events, currentEventIndex, setCurrentEventIndex }) => {
             </li>
           );
         })}
+        <li
+          className="countdown__link countdown__link--add"
+          onClick={(e) => {
+            e.preventDefault();
+            setIsAddEventMenu(true);
+          }}
+        >
+          <a href="">
+            <span>+</span> Add an event
+          </a>
+        </li>
       </ul>
     </nav>
   );

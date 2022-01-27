@@ -1,0 +1,97 @@
+$add-event-bg: rgb(83, 69, 69);
+
+.add-event__wrapper {
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-event {
+  flex: 0.34;
+  border-radius: 0.3rem;
+  margin: 2rem;
+  padding: 2rem 4rem;
+  background-color: $add-event-bg;
+  box-shadow: 0px 0px 60px 20px rgb(0 0 0 / 25%);
+
+  @media screen and (max-width: 1200px) {
+    flex: 0.4;
+  }
+
+  @media screen and (max-width: 991.98px) {
+    flex: 0.5;
+  }
+
+  @media screen and (max-width: 767.98px) {
+    flex: 0.7;
+    margin: 1rem;
+  }
+
+  @media screen and (max-width: 479.98px) {
+    flex: 0.9;
+    margin: 0.3rem;
+  }
+
+  &__block {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__label {
+    font-size: 1.5rem;
+    margin-right: 0.7rem;
+    width: 5rem;
+    font-weight: 600;
+  }
+
+  &__input {
+    height: 2.5rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    width: 18rem;
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+
+    &::placeholder {
+      color: rgb(172, 169, 169);
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    background: transparent;
+    border: 1px solid #fff;
+    font-weight: bold;
+    color: #fff;
+    transition: all 0.4s ease;
+    margin-top: 1rem;
+
+    &:hover {
+      color: $add-event-bg;
+      background-color: #fff;
+    }
+  }
+
+  &__error {
+    color: rgb(255, 43, 43);
+    font-size: 1.15rem;
+    margin-top: 0.5rem;
+    display: block;
+  }
+}
