@@ -102,19 +102,17 @@ $add-event-bg: rgb(85, 72, 72);
     display: block;
   }
 
-  &__bg-images {
+  &__bg-images,
+  &__colors {
     margin-top: 1rem;
   }
 
-  &__bg-images {
-    margin-top: 1rem;
-  }
-
-  &__bg-images-list {
+  &__bg-images-list,
+  &__colors-list {
     display: flex;
   }
 
-  &__bg-images-label {
+  &__slider-label {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 0.7rem;
@@ -138,10 +136,32 @@ $add-event-bg: rgb(85, 72, 72);
       height: 62px;
     }
   }
+
+  &__color {
+    margin-right: 0.75rem;
+    cursor: pointer;
+    &:hover,
+    &.active {
+      span {
+        border: 2px solid #fff;
+      }
+    }
+    span {
+      width: 2.5rem !important;
+      height: 2.5rem;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+
+      border-radius: 50%;
+      display: inline-block;
+      border: 2px solid transparent;
+    }
+  }
 }
 
 // Slider
-.add-event__bg-images-list {
+.add-event__bg-images-list,
+.add-event__colors-list {
   min-width: 0;
   position: relative;
 

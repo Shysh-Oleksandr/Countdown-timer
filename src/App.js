@@ -4,6 +4,7 @@ import Event from "./components/event/Event";
 import Events from "./components/events/Events";
 import eventsData from "./data/eventsData";
 import { useLocalStorage } from "./LocalStorage";
+import { createGlobalStyle } from "styled-components";
 
 function App() {
   const [events, setEvents] = useLocalStorage("events", eventsData);
@@ -12,11 +13,18 @@ function App() {
     0
   );
   const [isAddEventMenu, setIsAddEventMenu] = useState(false);
+  const GlobalStyles = createGlobalStyle`
+  :root {
+    --eventColor: ${events[currentEventIndex].color};
+  }
+`;
+
   return (
     <div
       className="wrapper"
       style={{ backgroundImage: `url(${events[currentEventIndex].image})` }}
     >
+      <GlobalStyles />
       <Event currentEvent={events[currentEventIndex]} />
       <Events
         events={events}

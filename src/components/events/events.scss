@@ -1,4 +1,4 @@
-$eventColor: #eb7a62;
+$eventColor: var(--eventColor);
 
 .countdown__navigation {
   margin: 2.5rem 0;
@@ -24,7 +24,6 @@ $eventColor: #eb7a62;
   &__link {
     margin-right: 2.2rem;
     flex: 1 1 25%;
-    cursor: pointer;
 
     &--add {
       position: absolute;

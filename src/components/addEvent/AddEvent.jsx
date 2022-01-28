@@ -3,6 +3,7 @@ import "./addEvent.scss";
 import { useForm } from "react-hook-form";
 import Slider from "react-slick";
 import bgImagesData from "./../../data/bgImagesData";
+import colorsData from "../../data/colorsData";
 
 const AddEvent = ({
   isAddEventMenu,
@@ -20,11 +21,21 @@ const AddEvent = ({
   } = useForm();
 
   const [currentBgImageIndex, setCurrentBgImageIndex] = useState(0);
+  const [currentColorIndex, setCurrentColorIndex] = useState(0);
 
-  var settings = {
+  var bgImagesSettings = {
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
+    dots: false,
+    slidesToScroll: 3,
+    variableWidth: true,
+  };
+
+  var colorsSettings = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 8,
     dots: false,
     slidesToScroll: 3,
     variableWidth: true,
@@ -59,6 +70,7 @@ const AddEvent = ({
           name: eventName,
           date: eventDate,
           image: bgImagesData[currentBgImageIndex],
+          color: colorsData[currentColorIndex],
         },
       ];
     });
@@ -114,9 +126,9 @@ const AddEvent = ({
           )}
 
           <div className="add-event__bg-images">
-            <h4 className="add-event__bg-images-label">Background image:</h4>
+            <h4 className="add-event__slider-label">Background image:</h4>
             <ul className="add-event__bg-images-list">
-              <Slider {...settings}>
+              <Slider {...bgImagesSettings}>
                 {bgImagesData.map((bgImage, index) => {
                   return (
                     <li
@@ -134,6 +146,26 @@ const AddEvent = ({
             </ul>
           </div>
 
+          <div className="add-event__colors">
+            <h4 className="add-event__slider-label">Theme color:</h4>
+            <ul className="add-event__colors-list">
+              <Slider {...colorsSettings}>
+                {colorsData.map((color, index) => {
+                  return (
+                    <li
+                      className={`add-event__color ${
+                        index === currentColorIndex ? "active" : ""
+                      }`}
+                      onClick={() => setCurrentColorIndex(index)}
+                      key={index + color}
+                    >
+                      <span style={{ backgroundColor: color }}></span>
+                    </li>
+                  );
+                })}
+              </Slider>
+            </ul>
+          </div>
           <button className="add-event__btn" type="submit">
             Add
           </button>
