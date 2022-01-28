@@ -2,12 +2,16 @@ import { useState } from "react";
 import AddEvent from "./components/addEvent/AddEvent";
 import Event from "./components/event/Event";
 import Events from "./components/events/Events";
-import eventsData from "./eventsData";
+import eventsData from "./data/eventsData";
+import { useLocalStorage } from "./LocalStorage";
 
 function App() {
-  const [events, setEvents] = useState(eventsData);
+  const [events, setEvents] = useLocalStorage("events", eventsData);
+  const [currentEventIndex, setCurrentEventIndex] = useLocalStorage(
+    "currentEventIndex",
+    0
+  );
   const [isAddEventMenu, setIsAddEventMenu] = useState(false);
-  const [currentEventIndex, setCurrentEventIndex] = useState(0);
   return (
     <div
       className="wrapper"

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./addEvent.scss";
 import { useForm } from "react-hook-form";
-import bgImagesData from "./../../bgImagesData";
 import Slider from "react-slick";
+import bgImagesData from "./../../data/bgImagesData";
 
 const AddEvent = ({
   isAddEventMenu,
@@ -68,6 +68,7 @@ const AddEvent = ({
   return (
     <div className="add-event__wrapper">
       <div className="add-event" ref={ref}>
+        <h2 className="add-event__title">Adding a new event</h2>
         <form className="add-event__form" onSubmit={handleSubmit(onSubmit)}>
           <div className="add-event__block">
             <label className="add-event__label" htmlFor="add-event__name">
