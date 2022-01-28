@@ -1,12 +1,14 @@
 import React from "react";
 import "./events.scss";
 import Slider from "react-slick";
+import { AiFillEdit } from "react-icons/ai";
 
 const Events = ({
   events,
   currentEventIndex,
   setCurrentEventIndex,
   setIsAddEventMenu,
+  setIsEditing,
 }) => {
   var settings = {
     infinite: true,
@@ -47,16 +49,33 @@ const Events = ({
           })}
         </Slider>
       </ul>
-      <div
-        className="countdown__link--add"
-        onClick={(e) => {
-          e.preventDefault();
-          setIsAddEventMenu(true);
-        }}
-      >
-        <a href="">
-          <span>+</span> Add an event
-        </a>
+      <div className="countdown__btns">
+        <div
+          className="countdown__link-btn countdown__link--add"
+          onClick={(e) => {
+            e.preventDefault();
+            setIsAddEventMenu(true);
+          }}
+        >
+          <a href="">
+            <span className="add-icon">+</span> <span>Add an event</span>
+          </a>
+        </div>
+        <div
+          className="countdown__link-btn countdown__link--edit"
+          onClick={(e) => {
+            e.preventDefault();
+            setIsAddEventMenu(true);
+            setIsEditing(true);
+          }}
+        >
+          <a href="">
+            <span className="edit-icon">
+              <AiFillEdit />
+            </span>{" "}
+            <span>Edit this event</span>
+          </a>
+        </div>
       </div>
     </nav>
   );

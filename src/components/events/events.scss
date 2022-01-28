@@ -20,34 +20,42 @@ $eventColor: var(--eventColor);
     }
   }
 
+  &__btns {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 8;
+  }
+
   // .countdown__link
   &__link {
     margin-right: 2.2rem;
     flex: 1 1 25%;
 
-    &--add {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      z-index: 8;
+    &-btn {
       border-radius: 0.5rem;
       border: 3px solid $eventColor;
       padding: 0.5rem;
-      max-width: 25%;
       transition: all 0.4s ease;
       cursor: pointer;
+      height: 4rem;
 
       a {
         color: $eventColor;
         font-size: 1.5rem;
         line-height: 2rem;
-
         white-space: nowrap;
         transition: all 0.4s ease;
+        display: flex;
+        align-items: center;
+        vertical-align: middle;
 
-        span {
-          vertical-align: sub;
+        .add-icon {
           font-size: 3.5rem;
+        }
+
+        .edit-icon {
+          font-size: 1.8rem;
         }
       }
       &:hover {
@@ -56,6 +64,10 @@ $eventColor: var(--eventColor);
           color: #fff;
         }
       }
+    }
+
+    &--add {
+      margin-bottom: 0.5rem;
     }
 
     @media screen and (max-width: 767.98px) {
@@ -86,6 +98,7 @@ $eventColor: var(--eventColor);
       border-width: 0px 3px;
       white-space: nowrap;
     }
+
     &.active a,
     &:hover a {
       color: $eventColor;

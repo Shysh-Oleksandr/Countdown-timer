@@ -5,8 +5,11 @@ const bgImagesData = [
   "/images/museum.webp",
   "/images/concert.webp",
   "/images/mountains.webp",
-  "/images/children.webp",
-  "/images/wedding.webp",
+  "/images/halloween.webp",
+  "/images/christmas.webp",
+  "/images/newYear.webp",
+  "/images/easter.webp",
+  "/images/valentinesDay.webp",
 ];
 
 export default bgImagesData;

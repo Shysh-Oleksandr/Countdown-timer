@@ -13,12 +13,12 @@ function App() {
     0
   );
   const [isAddEventMenu, setIsAddEventMenu] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const GlobalStyles = createGlobalStyle`
   :root {
     --eventColor: ${events[currentEventIndex].color};
   }
 `;
-
   return (
     <div
       className="wrapper"
@@ -31,6 +31,7 @@ function App() {
         currentEventIndex={currentEventIndex}
         setCurrentEventIndex={setCurrentEventIndex}
         setIsAddEventMenu={setIsAddEventMenu}
+        setIsEditing={setIsEditing}
       />
       {isAddEventMenu && (
         <AddEvent
@@ -38,7 +39,10 @@ function App() {
           setIsAddEventMenu={setIsAddEventMenu}
           setEvents={setEvents}
           setCurrentEventIndex={setCurrentEventIndex}
+          isEditing={isEditing}
           events={events}
+          currentEventIndex={currentEventIndex}
+          setIsEditing={setIsEditing}
         />
       )}
     </div>

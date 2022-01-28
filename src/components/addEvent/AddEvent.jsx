@@ -11,6 +11,9 @@ const AddEvent = ({
   setEvents,
   setCurrentEventIndex,
   events,
+  currentEventIndex,
+  isEditing,
+  setIsEditing,
 }) => {
   const ref = useRef();
   const {
@@ -22,7 +25,7 @@ const AddEvent = ({
 
   const [currentBgImageIndex, setCurrentBgImageIndex] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
-
+  const currentEvent = events[currentEventIndex];
   var bgImagesSettings = {
     infinite: false,
     speed: 500,
@@ -47,6 +50,7 @@ const AddEvent = ({
       // then close the menu
       if (isAddEventMenu && ref.current && !ref.current.contains(e.target)) {
         setIsAddEventMenu(false);
+        setIsEditing(false);
       }
     };
 
@@ -58,29 +62,68 @@ const AddEvent = ({
     };
   }, [isAddEventMenu]);
 
+  function convertDate(date) {
+    var dateObj = new Date(date + " EDT");
+    return dateObj.toISOString().substring(0, 10);
+  }
+
+  function getIndexByValue(value, array) {
+    return array.indexOf(value);
+  }
+
+  useEffect(() => {
+    if (isEditing) {
+      setCurrentBgImageIndex(getIndexByValue(currentEvent.image, bgImagesData));
+      setCurrentColorIndex(getIndexByValue(currentEvent.color, colorsData));
+    }
+  }, [isEditing]);
+
   function onSubmit() {
     let eventName = getValues("name");
     let eventDate = getValues("date");
+    if (isEditing) {
+      setEvents((prevEvents) => {
+        let newEvents = prevEvents.map((event) => {
+          if (event.id === currentEvent.id) {
+            return {
+              id: event.id,
+              name: eventName,
+              date: eventDate,
+              image: bgImagesData[currentBgImageIndex],
+              color: colorsData[currentColorIndex],
+            };
+          }
+
+          return event;
+        });
+        return newEvents;
+      });
+      setIsEditing(false);
+    } else {
+      setEvents((prevEvents) => {
+        return [
+          ...prevEvents,
+          {
+            id: prevEvents.length,
+            name: eventName,
+            date: eventDate,
+            image: bgImagesData[currentBgImageIndex],
+            color: colorsData[currentColorIndex],
+          },
+        ];
+      });
+      setCurrentEventIndex(events.length);
+    }
+
     setIsAddEventMenu(false);
-    setEvents((prevEvents) => {
-      return [
-        ...prevEvents,
-        {
-          id: prevEvents.length,
-          name: eventName,
-          date: eventDate,
-          image: bgImagesData[currentBgImageIndex],
-          color: colorsData[currentColorIndex],
-        },
-      ];
-    });
-    setCurrentEventIndex(events.length);
   }
 
   return (
     <div className="add-event__wrapper">
       <div className="add-event" ref={ref}>
-        <h2 className="add-event__title">Adding a new event</h2>
+        <h2 className="add-event__title">
+          {isEditing ? "Editing the event" : "Adding a new event"}
+        </h2>
         <form className="add-event__form" onSubmit={handleSubmit(onSubmit)}>
           <div className="add-event__block">
             <label className="add-event__label" htmlFor="add-event__name">
@@ -91,6 +134,7 @@ const AddEvent = ({
               placeholder="Birthday"
               type="text"
               className="add-event__input"
+              defaultValue={isEditing ? currentEvent.name : ""}
               {...register("name", { required: true, maxLength: 16 })}
             />
           </div>
@@ -111,6 +155,7 @@ const AddEvent = ({
               id="add-event__date"
               type="date"
               className="add-event__input"
+              defaultValue={isEditing ? convertDate(currentEvent.date) : ""}
               {...register("date", {
                 required: true,
                 validate: (date) => new Date(date) >= new Date(),
@@ -167,8 +212,13 @@ const AddEvent = ({
             </ul>
           </div>
           <button className="add-event__btn" type="submit">
-            Add
+            {isEditing ? "Edit" : "Add"}
           </button>
+          {isEditing && (
+            <button className="add-event__btn add-event__btn--delete">
+              Delete
+            </button>
+          )}
         </form>
       </div>
     </div>
