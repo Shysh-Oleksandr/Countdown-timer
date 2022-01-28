@@ -1,4 +1,4 @@
-$add-event-bg: rgb(83, 69, 69);
+$add-event-bg: rgb(85, 72, 72);
 
 .add-event__wrapper {
   position: absolute;
@@ -15,9 +15,9 @@ $add-event-bg: rgb(83, 69, 69);
 .add-event {
   flex: 0.34;
   width: 34%;
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   margin: 2rem;
-  padding: 2rem 4rem;
+  padding: 3rem 4rem 2rem;
   background-color: $add-event-bg;
   box-shadow: 0px 0px 60px 20px rgb(0 0 0 / 25%);
 
@@ -90,8 +90,9 @@ $add-event-bg: rgb(83, 69, 69);
   }
 
   &__error {
-    color: rgb(255, 43, 43);
-    font-size: 1.15rem;
+    color: #ff3f3f;
+    font-size: 1.2rem;
+    font-weight: 600;
     margin-top: 0.5rem;
     display: block;
   }
@@ -129,7 +130,7 @@ $add-event-bg: rgb(83, 69, 69);
       border-radius: 0.7rem;
       border: 2px solid transparent;
 
-      height: auto;
+      height: 62px;
     }
   }
 }
@@ -172,14 +173,11 @@ $add-event-bg: rgb(83, 69, 69);
   }
   // Left arrow
   .slick-arrow.slick-prev {
-    left: -2%;
+    left: -9%;
     -webkit-mask-image: url("../../../public/images/arrowLeft.svg");
     mask-image: url("../../../public/images/arrowLeft.svg");
     background-position: 0 0;
     background-repeat: no-repeat;
-    @media (max-width: 991.98px) {
-      left: 2%;
-    }
   }
 
   .slick-disabled {
@@ -187,14 +185,11 @@ $add-event-bg: rgb(83, 69, 69);
   }
   // Right arrow
   .slick-arrow.slick-next {
-    right: -2%;
+    right: -9%;
     -webkit-mask-image: url("../../../public/images/arrowRight.svg");
     mask-image: url("../../../public/images/arrowRight.svg");
     background-position: 0 0;
     background-repeat: no-repeat;
-    @media (max-width: 991.98px) {
-      right: 2%;
-    }
   }
 
   // Dots

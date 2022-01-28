@@ -26,7 +26,7 @@ const AddEvent = ({
     speed: 500,
     slidesToShow: 4,
     dots: false,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     variableWidth: true,
   };
 
@@ -39,11 +39,11 @@ const AddEvent = ({
       }
     };
 
-    document.addEventListener("mouseup", checkIfClickedOutside);
+    document.addEventListener("mousedown", checkIfClickedOutside);
 
     return () => {
       // Cleanup the event listener
-      document.removeEventListener("mouseup", checkIfClickedOutside);
+      document.removeEventListener("mousedown", checkIfClickedOutside);
     };
   }, [isAddEventMenu]);
 
