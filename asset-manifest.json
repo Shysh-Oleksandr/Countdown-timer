@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/countdown-timer/static/css/main.625bf487.css",
+    "main.js": "/countdown-timer/static/js/main.f98051f7.js",
+    "static/media/halloween.webp": "/countdown-timer/static/media/halloween.58aa2e913168898cfaf0.webp",
+    "index.html": "/countdown-timer/index.html",
+    "static/media/arrowLeft.svg": "/countdown-timer/static/media/arrowLeft.7379957027fdde1b2b70.svg",
+    "static/media/arrowRight.svg": "/countdown-timer/static/media/arrowRight.5916ab51e243a6fd6add.svg",
+    "main.625bf487.css.map": "/countdown-timer/static/css/main.625bf487.css.map",
+    "main.f98051f7.js.map": "/countdown-timer/static/js/main.f98051f7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.625bf487.css",
+    "static/js/main.f98051f7.js"
+  ]
+}
