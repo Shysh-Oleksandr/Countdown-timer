@@ -1,7 +1,7 @@
 import React from "react";
 import "./events.scss";
 import Slider from "react-slick";
-import { AiFillEdit } from "react-icons/ai";
+import { AiFillEdit, AiOutlinePlus } from "react-icons/ai";
 
 const Events = ({
   events,
@@ -13,10 +13,10 @@ const Events = ({
   var settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: events.length >= 4 ? 4 : events.length,
     dots: false,
-    centerMode: false,
     slidesToScroll: 1,
+    initialSlide: currentEventIndex,
   };
 
   function changeCountdown(e) {
@@ -50,33 +50,34 @@ const Events = ({
           })}
         </Slider>
       </ul>
-      <div className="countdown__btns">
-        <div
-          className="countdown__link-btn countdown__link--add"
-          onClick={(e) => {
-            e.preventDefault();
-            setIsAddEventMenu(true);
-          }}
-        >
-          <a href="">
-            <span className="add-icon">+</span> <span>Add an event</span>
-          </a>
-        </div>
-        <div
-          className="countdown__link-btn countdown__link--edit"
-          onClick={(e) => {
-            e.preventDefault();
-            setIsAddEventMenu(true);
-            setIsEditing(true);
-          }}
-        >
-          <a href="">
-            <span className="edit-icon">
-              <AiFillEdit />
-            </span>{" "}
-            <span>Edit this event</span>
-          </a>
-        </div>
+      <div
+        className="countdown__link-btn countdown__link--add"
+        onClick={(e) => {
+          e.preventDefault();
+          setIsAddEventMenu(true);
+        }}
+      >
+        <a href="">
+          <span className="add-icon">
+            <AiOutlinePlus />
+          </span>{" "}
+          <span>Add an event</span>
+        </a>
+      </div>
+      <div
+        className="countdown__link-btn countdown__link--edit"
+        onClick={(e) => {
+          e.preventDefault();
+          setIsAddEventMenu(true);
+          setIsEditing(true);
+        }}
+      >
+        <a href="">
+          <span className="edit-icon">
+            <AiFillEdit />
+          </span>{" "}
+          <span>Edit this event</span>
+        </a>
       </div>
     </nav>
   );

@@ -16,6 +16,8 @@ const AddEvent = ({
   setIsEditing,
 }) => {
   const ref = useRef();
+  const sliderRef = useRef();
+
   const {
     register,
     handleSubmit,
@@ -26,22 +28,28 @@ const AddEvent = ({
   const [currentBgImageIndex, setCurrentBgImageIndex] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const currentEvent = events[currentEventIndex];
-  var bgImagesSettings = {
+  const bgImagesSettings = {
     infinite: false,
     speed: 500,
     slidesToShow: 3,
     dots: false,
     slidesToScroll: 3,
     variableWidth: true,
+    initialSlide: isEditing
+      ? getIndexByValue(currentEvent.image, bgImagesData)
+      : 0,
   };
 
-  var colorsSettings = {
+  const colorsSettings = {
     infinite: false,
     speed: 500,
     slidesToShow: 8,
     dots: false,
     slidesToScroll: 3,
     variableWidth: true,
+    initialSlide: isEditing
+      ? getIndexByValue(currentEvent.color, colorsData)
+      : 0,
   };
 
   useEffect(() => {
@@ -81,7 +89,7 @@ const AddEvent = ({
       setCurrentBgImageIndex(getIndexByValue(currentEvent.image, bgImagesData));
       setCurrentColorIndex(getIndexByValue(currentEvent.color, colorsData));
     }
-  }, [isEditing]);
+  }, [isEditing, isAddEventMenu]);
 
   function onSubmit() {
     let eventName = getValues("name");
@@ -190,7 +198,7 @@ const AddEvent = ({
           <div className="add-event__bg-images">
             <h4 className="add-event__slider-label">Background image:</h4>
             <ul className="add-event__bg-images-list">
-              <Slider {...bgImagesSettings}>
+              <Slider {...bgImagesSettings} ref={sliderRef}>
                 {bgImagesData.map((bgImage, index) => {
                   return (
                     <li

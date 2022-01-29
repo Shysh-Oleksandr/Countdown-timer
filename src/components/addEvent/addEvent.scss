@@ -1,4 +1,5 @@
 $add-event-bg: rgb(85, 72, 72);
+$eventColor: var(--eventColor);
 
 .add-event__wrapper {
   position: absolute;
@@ -78,6 +79,14 @@ $add-event-bg: rgb(85, 72, 72);
     &::placeholder {
       color: rgb(172, 169, 169);
     }
+
+    &::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+
+    &:focus {
+      border-color: $eventColor;
+    }
   }
 
   &__btn {
@@ -151,6 +160,7 @@ $add-event-bg: rgb(85, 72, 72);
       border: 2px solid transparent;
 
       height: 62px;
+      width: 92px;
     }
   }
 
@@ -210,7 +220,7 @@ $add-event-bg: rgb(85, 72, 72);
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-      background-color: rgb(180, 169, 169);
+      background-color: $eventColor;
     }
   }
   // Left arrow
