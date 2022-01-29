@@ -1,16 +1,26 @@
 {
   "files": {
-    "main.css": "/countdown-timer/static/css/main.625bf487.css",
-    "main.js": "/countdown-timer/static/js/main.f98051f7.js",
+    "main.css": "/countdown-timer/static/css/main.3849d230.css",
+    "main.js": "/countdown-timer/static/js/main.d1286247.js",
+    "static/media/christmas.webp": "/countdown-timer/static/media/christmas.6c81872280ea1fee2eaa.webp",
+    "static/media/concert.webp": "/countdown-timer/static/media/concert.a465d215d7a7559d613b.webp",
+    "static/media/museum.webp": "/countdown-timer/static/media/museum.61578d39df0924ac49d7.webp",
+    "static/media/mountains.webp": "/countdown-timer/static/media/mountains.3667ab5760be265b79de.webp",
+    "static/media/event.webp": "/countdown-timer/static/media/event.a939490c2a275fbd4b30.webp",
+    "static/media/sea.webp": "/countdown-timer/static/media/sea.62a08b737445fbd78a00.webp",
     "static/media/halloween.webp": "/countdown-timer/static/media/halloween.58aa2e913168898cfaf0.webp",
+    "static/media/newYear.webp": "/countdown-timer/static/media/newYear.2e46d94edf0c907cbb72.webp",
+    "static/media/birthday.webp": "/countdown-timer/static/media/birthday.79408e197f83ed8d0e29.webp",
+    "static/media/easter.webp": "/countdown-timer/static/media/easter.7150a31c5f1922d13363.webp",
+    "static/media/valentinesDay.webp": "/countdown-timer/static/media/valentinesDay.13ebc6fc6bdaf86595bb.webp",
     "index.html": "/countdown-timer/index.html",
     "static/media/arrowLeft.svg": "/countdown-timer/static/media/arrowLeft.7379957027fdde1b2b70.svg",
     "static/media/arrowRight.svg": "/countdown-timer/static/media/arrowRight.5916ab51e243a6fd6add.svg",
-    "main.625bf487.css.map": "/countdown-timer/static/css/main.625bf487.css.map",
-    "main.f98051f7.js.map": "/countdown-timer/static/js/main.f98051f7.js.map"
+    "main.3849d230.css.map": "/countdown-timer/static/css/main.3849d230.css.map",
+    "main.d1286247.js.map": "/countdown-timer/static/js/main.d1286247.js.map"
   },
   "entrypoints": [
-    "static/css/main.625bf487.css",
-    "static/js/main.f98051f7.js"
+    "static/css/main.3849d230.css",
+    "static/js/main.d1286247.js"
   ]
 }
