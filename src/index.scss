@@ -1,8 +1,4 @@
-@font-face {
-  font-family: harryPotterFont;
-  src: url(../public/fonts/HarryP-MVZ6w.ttf);
-}
-
+// Resetting styles.
 * {
   padding: 0;
   margin: 0;
@@ -94,6 +90,7 @@ h6 {
   font-weight: 400;
 }
 
+// General styles.
 body {
   @media screen and (max-width: 991.98px) {
     min-height: 580px;
@@ -107,7 +104,7 @@ body {
 }
 
 .wrapper {
-  font-family: "Josefin Slab", serif; // "harryPotterFont"
+  font-family: "Josefin Slab", serif;
   background-image: url("../public/images/halloween.webp");
   height: 100vh;
   min-height: 480px;

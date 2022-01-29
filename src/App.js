@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { createGlobalStyle } from "styled-components";
 import AddEvent from "./components/addEvent/AddEvent";
 import Event from "./components/event/Event";
 import Events from "./components/events/Events";
+import bgImagesData from "./data/bgImagesData";
 import eventsData from "./data/eventsData";
 import { useLocalStorage } from "./LocalStorage";
-import { createGlobalStyle } from "styled-components";
-import bgImagesData from "./data/bgImagesData";
 
 function App() {
   const [events, setEvents] = useLocalStorage("events", eventsData);
@@ -25,7 +24,6 @@ function App() {
     };
   }
 `;
-  // window.localStorage.clear();
 
   return (
     <div

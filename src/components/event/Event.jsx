@@ -51,8 +51,8 @@ const Event = ({ currentEvent }) => {
 
   useEffect(() => {
     // Setting coundown timer for new date.
-    eventRef.current.classList.remove("fade"); // removing the class
-    headerRef.current.classList.remove("fade"); // removing the class
+    eventRef.current.classList.remove("fade");
+    headerRef.current.classList.remove("fade");
 
     setTimeout(() => {
       countdown(checkDate(currentEvent));
@@ -78,38 +78,16 @@ const Event = ({ currentEvent }) => {
         </h1>
       </div>
       <div className="countdown fade" ref={eventRef}>
-        <div className="countdown__item">
-          <div className="countdown__days countdown__item-info">
-            <p className="countdown__number" id="days">
-              {time.days}
-            </p>
-            <span className="countdown__label">days</span>
-          </div>
-        </div>
-        <div className="countdown__item">
-          <div className="countdown__hours countdown__item-info">
-            <p className="countdown__number" id="hours">
-              {time.hours}
-            </p>
-            <span className="countdown__label">hours</span>
-          </div>
-        </div>
-        <div className="countdown__item">
-          <div className="countdown__minutes countdown__item-info">
-            <p className="countdown__number" id="minutes">
-              {time.minutes}
-            </p>
-            <span className="countdown__label">minutes</span>
-          </div>
-        </div>
-        <div className="countdown__item">
-          <div className="countdown__seconds countdown__item-info">
-            <p className="countdown__number" id="seconds">
-              {time.seconds}
-            </p>
-            <span className="countdown__label">seconds</span>
-          </div>
-        </div>
+        {Object.entries(time).map((timeItem, index) => {
+          return (
+            <div className="countdown__item" key={timeItem + index}>
+              <div className="countdown__item-info">
+                <p className="countdown__number">{timeItem[1]}</p>
+                <span className="countdown__label">{timeItem[0]}</span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
