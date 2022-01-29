@@ -10,6 +10,10 @@
     letter-spacing: 0.2rem;
     margin-top: 2.5rem;
     font-weight: 300;
+
+    @media screen and (max-width: 479.98px) {
+      margin-top: 4.5rem;
+    }
   }
 
   &__title {
@@ -23,10 +27,12 @@
 
     @media screen and (max-width: 767.98px) {
       font-size: 4.4rem;
+      margin-top: 1.5rem;
     }
 
     @media screen and (max-width: 479.98px) {
-      font-size: 3.8rem;
+      font-size: 3.5rem;
+      margin-top: 1rem;
     }
   }
 }
@@ -42,11 +48,7 @@
   @media screen and (max-width: 991.98px) {
     flex-wrap: wrap;
     max-width: 100%;
-    margin: 2rem 0 0;
-  }
-
-  @media screen and (max-width: 767.98px) {
-    margin-top: 3rem;
+    margin: 3rem 2rem 0;
   }
 
   @media screen and (max-width: 479.98px) {
@@ -62,6 +64,7 @@
     @media screen and (max-width: 991.98px) {
       flex-basis: 50%;
       margin-top: 2rem;
+      padding: 0 1rem;
 
       &:nth-child(-n + 2) {
         margin-top: 0;

@@ -15,8 +15,30 @@ const Events = ({
     speed: 500,
     slidesToShow: events.length >= 4 ? 4 : events.length,
     dots: false,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     initialSlide: currentEventIndex,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   function changeCountdown(e) {

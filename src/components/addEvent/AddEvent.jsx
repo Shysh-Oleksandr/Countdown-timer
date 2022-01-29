@@ -31,19 +31,35 @@ const AddEvent = ({
   const bgImagesSettings = {
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     dots: false,
     slidesToScroll: 3,
     variableWidth: true,
     initialSlide: isEditing
       ? getIndexByValue(currentEvent.image, bgImagesData)
       : 0,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
 
   const colorsSettings = {
     infinite: false,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: 6,
     dots: false,
     slidesToScroll: 3,
     variableWidth: true,
@@ -140,7 +156,8 @@ const AddEvent = ({
     setCurrentEventIndex((prevIndex) => {
       return prevIndex === events.length - 1 ? 0 : prevIndex;
     });
-    events.length !== 1 ? setIsAddEventMenu(false) : setIsEditing(false);
+    events.length !== 1 && setIsAddEventMenu(false);
+    setIsEditing(false);
   }
 
   return (

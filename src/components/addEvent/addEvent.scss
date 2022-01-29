@@ -43,6 +43,10 @@ $eventColor: var(--eventColor);
   &__title {
     font-size: 2rem;
     margin-bottom: 1.5rem;
+
+    @media screen and (max-width: 479.98px) {
+      font-size: 2.3rem;
+    }
   }
 
   &__block {
@@ -60,6 +64,11 @@ $eventColor: var(--eventColor);
     margin-right: 0.7rem;
     width: 5rem;
     font-weight: 600;
+
+    @media screen and (max-width: 479.98px) {
+      font-size: 1.7rem;
+      width: 6rem;
+    }
   }
 
   &__input {
@@ -75,6 +84,12 @@ $eventColor: var(--eventColor);
 
     border: 1px solid #fff;
     color: #fff;
+
+    @media screen and (max-width: 479.98px) {
+      font-size: 1.4rem;
+      height: 3rem;
+      width: 20rem;
+    }
 
     &::placeholder {
       color: rgb(172, 169, 169);
@@ -102,6 +117,11 @@ $eventColor: var(--eventColor);
     margin-top: 1rem;
     padding: 0.8rem;
     box-shadow: 0px 4px 10px 2px rgb(0 0 0 / 20%);
+
+    @media screen and (max-width: 479.98px) {
+      font-size: 1.7rem;
+      padding: 1rem;
+    }
 
     &--delete {
       background-color: rgb(190, 54, 54);
@@ -142,6 +162,9 @@ $eventColor: var(--eventColor);
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 0.7rem;
+    @media screen and (max-width: 479.98px) {
+      font-size: 1.7rem;
+    }
   }
 
   &__bg-image {
@@ -230,6 +253,19 @@ $eventColor: var(--eventColor);
     mask-image: url("../../../public/images/arrowLeft.svg");
     background-position: 0 0;
     background-repeat: no-repeat;
+
+    @media screen and (max-width: 767.98px) {
+      left: -10%;
+    }
+    @media screen and (max-width: 559.98px) {
+      left: -13%;
+    }
+    @media screen and (max-width: 479.98px) {
+      left: -10%;
+    }
+    @media screen and (max-width: 379.98px) {
+      left: -15%;
+    }
   }
 
   .slick-disabled {
@@ -242,6 +278,19 @@ $eventColor: var(--eventColor);
     mask-image: url("../../../public/images/arrowRight.svg");
     background-position: 0 0;
     background-repeat: no-repeat;
+
+    @media screen and (max-width: 767.98px) {
+      right: -10%;
+    }
+    @media screen and (max-width: 559.98px) {
+      right: -13%;
+    }
+    @media screen and (max-width: 479.98px) {
+      right: -10%;
+    }
+    @media screen and (max-width: 379.98px) {
+      right: -15%;
+    }
   }
 
   // Dots
