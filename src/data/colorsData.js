@@ -1,5 +1,5 @@
 const colorsData = [
-  "#eb6262",
+  "#eb7a62",
   "#eb62cd",
   "#6a62eb",
   "#07ddff",

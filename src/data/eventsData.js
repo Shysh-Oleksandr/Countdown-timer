@@ -25,14 +25,14 @@ const eventsData = [
     name: "Easter",
     date: "17 Apr 2022",
     image: "/images/easter.webp",
-    color: "#ffce19",
+    color: "#f2ff25",
   },
   {
     id: 4,
     name: "Valentine’s Day",
     date: "14 Feb 2022",
     image: "/images/valentinesDay.webp",
-    color: "#ff6308",
+    color: "#eb62cd",
   },
 ];
 

@@ -25,7 +25,7 @@ const Events = ({
       return event.name.toLowerCase() === e.target.innerText.toLowerCase();
     });
     setTimeout(() => {
-      setCurrentEventIndex(event.id);
+      setCurrentEventIndex(events.indexOf(event));
     }, 225);
   }
 
@@ -34,11 +34,12 @@ const Events = ({
       <ul className="countdown__list">
         <Slider {...settings}>
           {events.map((event) => {
+            let eventId = events.indexOf(event);
             return (
               <li
-                key={event.name + event.id}
+                key={event.name + eventId}
                 className={`countdown__link ${
-                  event.id === currentEventIndex ? "active" : ""
+                  eventId === currentEventIndex ? "active" : ""
                 }`}
               >
                 <a onClick={(e) => changeCountdown(e)} href="">

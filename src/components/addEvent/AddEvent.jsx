@@ -48,7 +48,12 @@ const AddEvent = ({
     const checkIfClickedOutside = (e) => {
       // If the menu is open and the clicked target is not within the menu,
       // then close the menu
-      if (isAddEventMenu && ref.current && !ref.current.contains(e.target)) {
+      if (
+        isAddEventMenu &&
+        events.length > 0 &&
+        ref.current &&
+        !ref.current.contains(e.target)
+      ) {
         setIsAddEventMenu(false);
         setIsEditing(false);
       }
@@ -60,7 +65,7 @@ const AddEvent = ({
       // Cleanup the event listener
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
-  }, [isAddEventMenu]);
+  }, [isAddEventMenu, events]);
 
   function convertDate(date) {
     var dateObj = new Date(date + " EDT");
@@ -81,6 +86,7 @@ const AddEvent = ({
   function onSubmit() {
     let eventName = getValues("name");
     let eventDate = getValues("date");
+    console.log("subm");
     if (isEditing) {
       setEvents((prevEvents) => {
         let newEvents = prevEvents.map((event) => {
@@ -116,6 +122,17 @@ const AddEvent = ({
     }
 
     setIsAddEventMenu(false);
+  }
+
+  function deleteEvent() {
+    setEvents((prevEvents) => {
+      const newEvents = prevEvents.filter((event) => event !== currentEvent);
+      return newEvents;
+    });
+    setCurrentEventIndex((prevIndex) => {
+      return prevIndex === events.length - 1 ? 0 : prevIndex;
+    });
+    events.length !== 1 ? setIsAddEventMenu(false) : setIsEditing(false);
   }
 
   return (
@@ -215,7 +232,11 @@ const AddEvent = ({
             {isEditing ? "Edit" : "Add"}
           </button>
           {isEditing && (
-            <button className="add-event__btn add-event__btn--delete">
+            <button
+              type="button"
+              onClick={deleteEvent}
+              className="add-event__btn add-event__btn--delete"
+            >
               Delete
             </button>
           )}
